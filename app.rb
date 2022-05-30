@@ -41,6 +41,10 @@ class WebApplicationServer < Sinatra::Base
 
   # EXAMPLE ROUTES
 
+  get '/' do
+    erb :space_new
+  end
+
   get '/animals' do
     erb :animals_index, locals: { animals: animals_table.list }
   end
