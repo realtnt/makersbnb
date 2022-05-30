@@ -4,6 +4,46 @@
 
 _Put or write the user stories here. Add any clarifying notes you might have._
 
+> As a visitor   
+> So that I choose a space to rent  
+> I want to see a list of available spaces
+
+
+> As a host 
+> So that I can rent out a space
+> I want to post a listing with a title, description, price
+
+
+> As a host
+> So that I car rent out all my spaces
+> I want to be able to post multiple listings
+
+
+> As a host
+> So that I can schedule my bookings
+> I want to set the range of dates the space can be booked
+
+
+> As a visitor
+> So that I can book a space for **one** night
+> I want to be able to send a hire request for a specific space
+
+
+> As a host
+> So that I manage my space requests
+> I want to be able to accept or deny hire requests
+
+
+> As a host
+> So that I don't get double bookings
+> Already booked dates are not available for requests
+
+
+> As a user
+> So that I can book a space
+> I want to be able to create an account on Makersbee'n'bee
+
+
 ## 2. Design the Interface
 
 _This is the fun part! Use excalidraw.com or a similar tool to design some
