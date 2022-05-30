@@ -19,7 +19,7 @@
 > We demonstrate our software early and often then listen carefully and make any changes needed. 
 > We will talk about the project and adapt our process to it, not the other way around.
 
-Respect: 
+## Respect: 
 > Everyone gives and feels the respect they deserve as a valued team member. 
 > Everyone contributes value even if it's simply enthusiasm. Developers respect the expertise of the customers and vice versa. 
 > Management respects our right to accept responsibility and receive authority over our own work.
