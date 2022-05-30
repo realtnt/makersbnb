@@ -1,8 +1,8 @@
-require "animal_entity"
+require "mock_space_entity"
 
-class AnimalsTable
-  def initialize(db)
-    @db = db
+class MockSpacesTable
+  def initialize
+    @spaces = []
   end
 
   def list

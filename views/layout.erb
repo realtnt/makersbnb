@@ -3,9 +3,10 @@
   <head>
     <title>Web Application</title>
     <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header>
+    <header class="flex-h">
       <div class="site-name">
         MakersBnB
       </div>
@@ -17,5 +18,8 @@
     <div class="container">
       <%= yield %>
     </div>
+    <footer>
+    MakersBnB 2022
+    </footer>
   </body>
 </html>

@@ -1,0 +1,7 @@
+.flex-h {
+  margin: 1rem 0.5rem 0 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
