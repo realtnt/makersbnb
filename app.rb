@@ -5,12 +5,12 @@ require 'sinatra/reloader'
 
 # You will want to require your data model class here
 require "database_connection"
-# require "animals_table"
-# require "animal_entity"
 
 class WebApplicationServer < Sinatra::Base
   # This line allows us to send HTTP Verbs like `DELETE` using forms
   use Rack::MethodOverride
+
+  enable :sessions
 
   configure :development do
     # In development mode (which you will be running) this enables the tool
@@ -42,39 +42,41 @@ class WebApplicationServer < Sinatra::Base
   # EXAMPLE ROUTES
 
   get '/' do
-    erb :space_new
+    erb :sign_up
   end
 
-  get '/animals' do
-    erb :animals_index, locals: { animals: animals_table.list }
+  get '/login' do
+    erb :log_in
   end
 
-  get '/animals/new' do
-    erb :animals_new
+  get '/spaces' do
+    erb :spaces
   end
 
-  post '/animals' do
-    animal = AnimalEntity.new(params[:species])
-    animals_table.add(animal)
-    redirect '/animals'
+  post '/spaces' do
+    redirect '/spaces'
   end
 
-  delete '/animals/:index' do
-    animals_table.remove(params[:index].to_i)
-    redirect '/animals'
+  get '/spaces/new' do
+    erb :spaces_new
   end
 
-  get '/animals/:index/edit' do
-    animal_index = params[:index].to_i
-    erb :animals_edit, locals: {
-      index: animal_index,
-      animal: animals_table.get(animal_index)
-    }
+  get '/spaces/:index' do
+    erb :space_details, locals: { index: params[:index] }
   end
 
-  patch '/animals/:index' do
-    animal_index = params[:index].to_i
-    animals_table.update(animal_index, params[:species])
-    redirect '/animals'
+  post '/registrations' do
+    session[:user_id] = params[:email]
+    redirect '/'
+  end
+
+  post '/registrations/login' do
+    session[:user_id] = params[:email]
+    redirect '/'
+  end
+
+  get '/sign_out' do
+    session.clear
+    redirect '/'
   end
 end

@@ -1,0 +1,25 @@
+<h1>Book a Space</h1>
+
+<form action="/spaces/search" method="POST">
+  <label for="from">Available from:</label>
+  <input type="date" id="from" name="from">
+  <br>
+  <label for="until">Available until:</label>
+  <input type="date" id="until" name="until">
+  <br>
+  <input type="submit" value="List Spaces">
+</form>
+
+<a class="space-link" id="space-link" href="/spaces/1">
+<div class="space-search-entry">
+  <h3><%= "Space" %></h3>
+  <%= "the final frontier" %>
+</div>
+</a>
+
+<a class="space-link" href="/spaces/2">
+<div class="space-search-entry">
+  <h3><%= "Space 2" %></h3>
+  <%= "the final front ear" %>
+</div>
+</a>
