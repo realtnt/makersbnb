@@ -58,17 +58,79 @@ _Design the data tables that will store all of the information your application
 manages. Include the data types and examples of three rows. Consider use Google
 Sheets or [AsciiTable](https://ozh.github.io/ascii-tables/) to do this._
 
-```plain
-# Example
+## users table
+|         users          |
+|------------------------|
+| id SERIAL PRIMARY  KEY |
+| email TEXT             |
+| password TEXT          |
+| name TEXT              |
 
-Table name: diary_entries
+## spaces table
 
-| id (NUMBER) |  title (TEXT)   |     contents (TEXT)      |
-|-------------|-----------------|--------------------------|
-|           1 | What a nice day | Today was a great day... |
-|           2 | What a bad day  | Today was an awful da... |
-|           3 | What a cool day | Today was a cool day ... |
-```
+|              spaces               |
+|-----------------------------------|
+| id SERIAL PRIMARY KEY             |
+| host_id INT REFERENCES users (id) |
+| price INT                         |
+| title TEXT                        |
+| description TEXT                  |
+| date_from DATE                    |
+| date_to DATE                      |
+
+## requests table
+
+|               requests               |
+|--------------------------------------|
+| id SERIAL PRIMARY KEY                |
+| visitor_id INT REFERENCES users (id) |
+| space_id INT REFERENCES spaces (id)  |
+| date DATE                            |
+
+
+## user-requests table
+
+|             users-requests              |
+|-----------------------------------------|
+| visitor_id SERIAL PRIMARY KEY           |
+| request_id INT REFERENCES requests (id) |
+
+
+
+## space-bookings table
+|             space-bookings              |
+|-----------------------------------------|
+| space_id INT REFERENCES spaces (id)     |
+| booking_id INT REFERENCES bookings (id) |
+
+## bookings table
+
+|                bookings                 |
+|-----------------------------------------|
+| id SERIAL PRIMARY KEY                   |
+| visitor_id INT REFERENCES users (id)    |
+| request_id INT REFERENCES requests (id) |
+| space_id INT REFERENCES space (id)      |
+| date DATE                               |
+
+## space-requests table
+
+|             space-requests              |
+|-----------------------------------------|
+| space_id INT REFERENCES spaces (id)     |
+| request_id INT REFERENCES requests (id) |
+
+## messages table
+
+
+|               messages                 |
+|----------------------------------------|
+| id SERIAL PRIMARY KEY                  |
+| message TEXT                           |
+| sent TIMESTAMP                         |
+| received TIMESTAMP                     |
+| sender_id INT REFERENCES users (id)    |
+| recipient_id INT REFERENCES users (id) |
 
 ## 4. Create Examples of User Interactions
 
