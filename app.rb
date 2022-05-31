@@ -6,6 +6,9 @@ require 'sinatra/reloader'
 # You will want to require your data model class here
 require "database_connection"
 
+require 'space_entity'
+require 'spaces_table'
+
 class WebApplicationServer < Sinatra::Base
   # This line allows us to send HTTP Verbs like `DELETE` using forms
   use Rack::MethodOverride
@@ -28,8 +31,8 @@ class WebApplicationServer < Sinatra::Base
     $global = { db: db }
   end
 
-  def animals_table
-    $global[:animals_table] ||= AnimalsTable.new($global[:db])
+  def spaces_table
+    $global[:spaces_table] ||= SpacesTable.new($global[:db])
   end
 
   # Start your server using `rackup`.
@@ -50,10 +53,21 @@ class WebApplicationServer < Sinatra::Base
   end
 
   get '/spaces' do
-    erb :spaces
+    erb :spaces, locals: {
+      spaces: spaces_table.list
+    }
   end
 
   post '/spaces' do
+    space = SpaceEntity.new(
+      params[:name], 
+      params[:price],
+      params[:description], 
+      params[:date_from], 
+      params[:date_to],
+      10
+    )
+    spaces_table.add(space)
     redirect '/spaces'
   end
 

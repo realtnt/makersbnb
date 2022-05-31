@@ -2,25 +2,10 @@ require "helpers/database_helpers"
 
 RSpec.describe "Spaces", type: :feature do
   before(:each) do
-    # DatabaseHelpers.clear_table("users")
+    DatabaseHelpers.clear_table("spaces")
   end
 
-  it "logs in and lists a space" do
-    visit "/"
-    click_link "Login"
-    fill_in "email", with: "jimbob@gmail.com"
-    fill_in "password", with: "1234"
-    click_button "Login"
-    expect(page).to have_content "Sign out"
-    click_link "List a Space"
-    expect(page).to have_content "Name"
-    expect(page).to have_content "Description"
-    expect(page).to have_content "Price per night"
-    expect(page).to have_content "Available from:"
-    expect(page).to have_content "Available until:"
-  end
-
-  it "shows a list of spaces" do
+  it "logs in and shows a list of spaces" do
     visit "/"
     click_link "Login"
     fill_in "email", with: "jimbob@gmail.com"
@@ -39,7 +24,7 @@ RSpec.describe "Spaces", type: :feature do
     expect(page).to have_content "the final frontier"
   end
 
-  xit "shows no spaces found" do
+  it "shows no spaces found" do
     visit "/"
     click_link "Login"
     fill_in "email", with: "jimbob@gmail.com"
@@ -47,7 +32,7 @@ RSpec.describe "Spaces", type: :feature do
     click_button "Login"
     expect(page).to have_content "Sign out"
     click_link "Spaces"
-    expect(page).to have_content "No available spaces found."
+    expect(page).to have_content "There are no spaces available."
   end
 
   it "shows a list of spaces" do
