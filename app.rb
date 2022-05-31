@@ -59,12 +59,22 @@ class WebApplicationServer < Sinatra::Base
   end
 
   post '/spaces' do
+    target = ''
+    if params[:file]
+      tempfile = params[:file][:tempfile]
+      filename = params[:file][:filename]
+      target = "public/uploads/#{filename}"
+      File.open(target, 'wb') { |f| f.write tempfile.read }
+    end
+
+    server_path = target[6..]
     space = SpaceEntity.new(
       params[:name], 
       params[:price],
       params[:description], 
       params[:date_from], 
       params[:date_to],
+      params[:file] ? server_path : "/uploads/default.png",
       10
     )
     spaces_table.add(space)
