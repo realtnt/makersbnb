@@ -22,10 +22,10 @@ class UsersTable
 
   def row_to_object(row)
     return UserEntity.new(
-        row["name"],
-        row["email"],
-        row["password"],
-        row["id"]
+      row["name"],
+      row["email"],
+      row["password"],
+      row["id"]
     )
   end
 end

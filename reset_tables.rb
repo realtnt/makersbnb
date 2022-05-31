@@ -10,16 +10,31 @@ def reset_tables(db)
   db.run("CREATE TABLE animals (id SERIAL PRIMARY KEY, species TEXT NOT NULL);")
 
   db.run("DROP TABLE IF EXISTS users;")
-  db.run("CREATE TABLE users (id SERIAL PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL);")
+  db.run(
+    "CREATE TABLE users (id SERIAL PRIMARY KEY, 
+    name TEXT NOT NULL, email TEXT NOT NULL, 
+    password TEXT NOT NULL);")
 
   db.run("DROP TABLE IF EXISTS spaces;")
-  db.run("CREATE TABLE spaces (id SERIAL PRIMARY KEY, host_id INT NOT NULL, title TEXT NOT NULL, price INT NOT NULL, description TEXT NOT NULL, date_from DATE NOT NULL, date_to DATE NOT NULL);")
+  db.run(
+    "CREATE TABLE spaces (id SERIAL PRIMARY KEY, 
+    host_id INT NOT NULL, title TEXT NOT NULL, price INT NOT NULL, 
+    description TEXT NOT NULL, date_from DATE NOT NULL, date_to DATE NOT NULL);"
+    )
 
   db.run("DROP TABLE IF EXISTS requests;")
-  db.run("CREATE TABLE requests (id SERIAL PRIMARY KEY, visitor_id INT NOT NULL, space_id INT NOT NULL, date DATE NOT NULL);")
+  db.run(
+    "CREATE TABLE requests (id SERIAL PRIMARY KEY, 
+    visitor_id INT NOT NULL, space_id INT NOT NULL, 
+    date DATE NOT NULL);"
+    )
 
   db.run("DROP TABLE IF EXISTS bookings;")
-  db.run("CREATE TABLE bookings (id SERIAL PRIMARY KEY, visitor_id INT NOT NULL, request_id INT NOT NULL, space_id INT NOT NULL, date DATE NOT NULL);")
+  db.run(
+    "CREATE TABLE bookings (id SERIAL PRIMARY KEY, 
+    visitor_id INT NOT NULL, request_id INT NOT NULL, 
+    space_id INT NOT NULL, date DATE NOT NULL);"
+    )
 
   db.run("DROP TABLE IF EXISTS user_requests;")
   db.run("CREATE TABLE user_requests (visitor_id INT NOT NULL, request_id INT NOT NULL);")
