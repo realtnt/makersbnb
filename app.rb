@@ -76,7 +76,8 @@ class WebApplicationServer < Sinatra::Base
   end
 
   get '/spaces/:index' do
-    erb :space_details, locals: { index: params[:index] }
+    space = spaces_table.get(params[:index])
+    erb :space_details, locals: { space: space }
   end
 
   post '/registrations' do

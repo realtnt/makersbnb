@@ -46,8 +46,8 @@ RSpec.describe "Spaces", type: :feature do
     fill_in "Name", with: "Space"
     fill_in "Description", with: "the final frontier"
     fill_in "Price per night", with: "150"
-    fill_in "Available from:", with: "01/01/2023"
-    fill_in "Available until:", with: "10/01/2023"
+    fill_in "Available from:", with: "05/31/2022"
+    fill_in "Available until:", with: "07/01/2022"
     click_button "List my space"
     click_link "Spaces"
     expect(page).to have_content "Space"
@@ -56,7 +56,7 @@ RSpec.describe "Spaces", type: :feature do
     expect(page).to have_content "Space"
     expect(page).to have_content "the final frontier"
     expect(page).to have_content "150"
-    expect(page).to have_content "01/01/2023"
-    expect(page).to have_content "10/01/2023"
+    expect(page).to have_content "Tue, 31-May-2022"
+    expect(page).to have_content "Fri, 01-Jul-2022"
   end
 end
