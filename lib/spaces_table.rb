@@ -11,9 +11,9 @@ class SpacesTable
 
   def add(space)
     space = @db.run(
-        "INSERT INTO spaces (title, price, description, date_from, date_to, host_id) 
-        VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;", 
-        [space.title, space.price, space.description, space.date_from, space.date_to, space.host_id]
+        "INSERT INTO spaces (title, price, description, date_from, date_to, img_url, host_id) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id;", 
+        [space.title, space.price, space.description, space.date_from, space.date_to, space.img_url, space.host_id]
         )
     return space[0]["id"]
   end  
@@ -32,6 +32,7 @@ class SpacesTable
       row["description"],
       row["date_from"],
       row["date_to"],
+      row["img_url"],
       row["host_id"],
       row["id"]
     )

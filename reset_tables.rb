@@ -18,8 +18,9 @@ def reset_tables(db)
   db.run("DROP TABLE IF EXISTS spaces;")
   db.run(
     "CREATE TABLE spaces (id SERIAL PRIMARY KEY, 
-    host_id INT NOT NULL, title TEXT NOT NULL, price INT NOT NULL, 
-    description TEXT NOT NULL, date_from DATE NOT NULL, date_to DATE NOT NULL);"
+    host_id INT, title TEXT NOT NULL, price INT NOT NULL, 
+    description TEXT NOT NULL, date_from DATE NOT NULL, date_to DATE NOT NULL,
+    img_url TEXT);"
     )
 
   db.run("DROP TABLE IF EXISTS requests;")

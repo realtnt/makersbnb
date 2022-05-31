@@ -1,7 +1,7 @@
 class SpaceEntity
   def initialize(
       title, price, description, 
-      date_from, date_to, host_id = nil, id = nil
+      date_from, date_to, img_url, host_id = nil, id = nil
       )
 
     @title = title
@@ -9,6 +9,7 @@ class SpaceEntity
     @description = description
     @date_from = date_from
     @date_to = date_to
+    @img_url = img_url
     @host_id = host_id
     @id = id
   end
@@ -31,6 +32,10 @@ class SpaceEntity
 
   def date_to 
     return @date_to
+  end
+
+  def img_url
+    return @image_url
   end
 
   def host_id
