@@ -27,6 +27,6 @@ RSpec.describe SpacesTable do
     expect(spaces[0].description).to eq "my_description"
     expect(spaces[0].date_from).to eq "2001-02-03"
     expect(spaces[0].date_to).to eq "2001-03-23"
-    expect(spaces[0].host_id).to eq "87"       
+    expect(spaces[0].host_id).to eq "87"
   end
 end
