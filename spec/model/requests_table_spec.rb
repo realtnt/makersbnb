@@ -24,4 +24,14 @@ RSpec.describe RequestsTable do
     expect(requests[0].visitor_id).to eq "15"
     expect(requests[0].space_id).to eq "23"       
   end
+
+  it "gets a single space" do
+    db = clean_and_get_database
+    requests_table = RequestsTable.new(db)
+    request1 = requests_table.add(RequestEntity.new(Date.parse('2022-04-16'), 1, 2))
+    request2 = requests_table.add(RequestEntity.new(Date.parse('3000-02-03'), 34, 99))
+    request3 = requests_table.add(RequestEntity.new(Date.parse('4000-02-03'), 47, 67))
+    request = requests_table.get(request1)
+    expect(request.date).to eq "2022-04-16"
+  end
 end

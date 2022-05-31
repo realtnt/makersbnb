@@ -24,4 +24,14 @@ RSpec.describe UsersTable do
     expect(users[0].email).to eq "bob@bob.com"
     expect(users[0].password).to eq "bobpass1234"
   end
+
+  it "gets a single user" do
+    db = clean_and_get_database
+    users_table = UsersTable.new(db)
+    user1 = users_table.add(UserEntity.new("my_name1", "my_email1", "my_password1"))
+    user2 = users_table.add(UserEntity.new("my_name2", "my_email2", "my_password2"))
+    user1 = users_table.add(UserEntity.new("my_name3", "my_email3", "my_password3"))
+    user = users_table.get(user2)
+    expect(user.name).to eq "my_name2"
+  end
 end

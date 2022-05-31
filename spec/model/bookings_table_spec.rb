@@ -24,6 +24,18 @@ RSpec.describe BookingsTable do
     expect(bookings[0].visitor_id).to eq "15"
     expect(bookings[0].request_id).to eq "45"
     expect(bookings[0].space_id).to eq "23"
-         
+  end
+
+  it "gets a single booking" do
+    db = clean_and_get_database
+    bookings_table = BookingsTable.new(db)
+    booking1 = bookings_table.add(BookingEntity.new(Date.parse('2023-03-03'), 27, 53, 46))
+    booking2 = bookings_table.add(BookingEntity.new(Date.parse('2022-02-02'), 28, 54, 47))
+    booking3 = bookings_table.add(BookingEntity.new(Date.parse('2021-01-01'), 13, 22, 45))
+    booking = bookings_table.get(booking2)
+    expect(booking.date).to eq "2022-02-02"
+    expect(booking.visitor_id).to eq "28"
+    expect(booking.request_id).to eq "15"
+    expect(booking.request_id).to eq "47"
   end
 end
