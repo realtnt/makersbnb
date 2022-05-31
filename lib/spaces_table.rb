@@ -18,14 +18,6 @@ class SpacesTable
     return space[0]["id"]
   end
 
-  def get(index)
-    space = @db.run(
-      "SELECT * FROM spaces WHERE id = $1;", 
-      [index]
-    )
-    return row_to_object(space[0])
-  end
-
   private
 
   def row_to_object(row)
