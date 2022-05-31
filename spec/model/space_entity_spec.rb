@@ -8,7 +8,7 @@ RSpec.describe SpaceEntity do
     expect(space.description).to eq "A nice big ski chalet with fire"
     expect(space.date_from).to eq "2022-06-01"
     expect(space.date_to).to eq "2022-12-31"
-    expect(space.host_id).to eq "https://lookatmyspace.com"
+    expect(space.img_url).to eq "https://lookatmyspace.com"
     expect(space.host_id).to eq 1
   end
 end

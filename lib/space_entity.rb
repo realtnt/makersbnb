@@ -35,7 +35,7 @@ class SpaceEntity
   end
 
   def img_url
-    return @image_url
+    return @img_url
   end
 
   def host_id
