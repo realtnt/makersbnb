@@ -8,11 +8,18 @@
   <body>
     <header class="flex-h">
       <div class="site-name">
-        MakersBnB
+        <a href="/"><img class="logo" src="makersbnb-transp-small.png" alt="makersbnb logo"></a>
       </div>
       <nav>
-        <a href="#">About</a>
-        <a href="#">Login</a> 
+      <% if session[:user_id] %>
+          <a href="/spaces/new">List a Space</a>
+          <a href="/spaces">Spaces</a>
+          <a href="#">Requests</a>
+          <a href="/sign_out">Sign out</a> 
+      <% else %>
+          <a href="#">About</a>
+          <a href="/login">Login</a> 
+      <% end %>
       </nav>
     </header>
     <div class="container">
