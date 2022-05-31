@@ -9,7 +9,15 @@ class SpacesTable
     end
   end
 
-    private
+  def add(space)
+    result = @db.run(
+      "INSERT INTO spaces (title, price, description, date_from, date_to, host_id)
+      VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;",
+      [space.title, space.price, space.description, space.date_from, space.date_to, space.host_id]
+    )
+  end
+  
+  private
 
   def row_to_object(row)
     return SpaceEntity.new(

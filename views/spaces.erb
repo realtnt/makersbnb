@@ -10,16 +10,15 @@
   <input type="submit" value="List Spaces">
 </form>
 
-<a class="space-link" id="space-link" href="/spaces/1">
-<div class="space-search-entry">
-  <h3><%= "Space" %></h3>
-  <%= "the final frontier" %>
-</div>
-</a>
-
-<a class="space-link" href="/spaces/2">
-<div class="space-search-entry">
-  <h3><%= "Space 2" %></h3>
-  <%= "the final front ear" %>
-</div>
-</a>
+<% if spaces.empty?%>
+There are no spaces available.
+<% else %>
+  <% spaces.map do |space| %>
+  <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
+  <div class="space-search-entry">
+    <h3><%= space.title %></h3>
+    <%= space.description %>
+  </div>
+  </a>
+  <% end %>
+<% end %>
