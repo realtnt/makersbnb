@@ -16,8 +16,7 @@ class SpacesTable
         [space.title, space.price, space.description, space.date_from, space.date_to, space.host_id]
         )
     return space[0]["id"]
-  end
-  
+  end  
 
   def get(index)
     result = @db.run("SELECT * FROM spaces WHERE id = $1;", [index])
