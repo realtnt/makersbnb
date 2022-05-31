@@ -35,7 +35,7 @@ RSpec.describe SpacesTable do
     space_1 = spaces_table.add(SpaceEntity.new("my_title", 200, "my_description",Date.parse('2022-02-03'),Date.parse('2023-03-04'), 65))
     space_2 = spaces_table.add(SpaceEntity.new("moon_base",1000,"lunar phase",Date.parse('2022-11-07'), Date.parse('2022-11-30'), 808))
     space_3 = spaces_table.add(SpaceEntity.new("my_title_2", 300, "my_description_2",Date.parse('4000-02-03'),Date.parse('4002-03-04'), 47))
-    space = spaces_table.get(moon_base_id)
+    space = spaces_table.get(space_2)
     expect(space.title).to eq "moon_base"
   end
 end
