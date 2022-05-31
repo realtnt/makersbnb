@@ -1,9 +1,9 @@
 <h1>Space Details</h1>
 
-<h2><%= "Space" %></h2>
-<p><%= "the final frontier"%></p>
+<h2><%= space.title %></h2>
+<p><%= space.description %></p>
 <ul>
-  <li>Price: <%= "150" %></li>
-  <li>Available from: <%= "01/01/2023"%></li>
-  <li>Available until: <%= "10/01/2023"%></li>
+  <li>Price: <%= space.price %></li>
+  <li>Available from: <%= DateTime.parse(space.date_from).strftime('%a, %d-%b-%Y') %></li>
+  <li>Available until: <%= DateTime.parse(space.date_to).strftime('%a, %d-%b-%Y') %></li>
 </ul>
