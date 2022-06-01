@@ -1,4 +1,4 @@
-<h1>Book a Space</h1>
+<h1>Request a Space</h1>
 
 <form class="flex-h" action="/spaces/search" method="POST">
   <div>
@@ -11,9 +11,6 @@
   </div>
   <input type="submit" value="List Spaces">
 </form>
-
-FROM: <%= date_from %>
-TO: <%= date_to %>
 
 <% if spaces.empty? %>
 There are no spaces available.
@@ -29,14 +26,14 @@ There are no spaces available.
       <% end %>
   <% else %>
   <% spaces.map do |space| %>
-      <% if Date.parse(date_from) >= Date.parse(space.date_from) && Date.parse(date_from) <= Date.parse(space.date_to) %>
+      <% if space.date_from < date_to && space.date_to > date_from %>
         <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
         <div class="space-search-entry">
           <h3><%= space.title %></h3>
           <%= space.description %>
         </div>
         </a>
-      <% end %>
+       <% end %> 
     <% end %>
   <% end %>
 <% end %>
