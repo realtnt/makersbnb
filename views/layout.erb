@@ -2,13 +2,19 @@
 <html lang="en">
   <head>
     <title>Markersbnb</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,500;8..144,600;8..144,700&display=swap" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css"> -->
+    <link rel="stylesheet" href="/reset.css">
     <link rel="stylesheet" href="/styles.css">
+    <script src="/script.js" defer></script>
   </head>
   <body>
     <header class="flex-h">
       <div class="site-name">
-        <a href="/"><img class="logo" src="/makersbnb-transp-small.png" alt="makersbnb logo"></a>
+        <a href="/"><img class="logo" src="/makersbnb-transp.png" alt="makersbnb logo"></a>
       </div>
       <nav>
       <% if session[:user_id] %>
@@ -22,9 +28,9 @@
       <% end %>
       </nav>
     </header>
-    <div class="container">
+    <main>
       <%= yield %>
-    </div>
+    </main>
     <footer>
     &copy; MakersBnB 2022
     </footer>
