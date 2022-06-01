@@ -1,29 +1,22 @@
 
-<h1> List A Space </h1>
+<div class="form-wrapper">
+<h2> List A Space </h2>
   <form action="/spaces" method = "POST" enctype="multipart/form-data">
     <label for="name">Name</label>
-    <br>
-    <input type="text" id="name" name="name">
-    <br>
+    <input class="form-top-row" type="text" id="name" name="name" placeholder="Space name">
     <label for="description">Description</label>
-    <br>
-    <textarea id="description" name="description"></textarea>
-    <br>
+    <textarea id="description" name="description" placeholder="Add a description"></textarea>
     <label for="price">Price per night</label>
+    <input class="form-bottom-row" type="text" id="price" name="price" placeholder="Price per night">
     <br>
-    <input type="text" id="price" name="price">
-    <br>
+    <h3>Availability</h3>
     <label for="date_from">Available from:</label>
-    <br>
-    <input type="date" id="date_from" name="date_from">
-    <br>
+    <input class="form-top-row date-from" type="date" id="date_from" name="date_from" placeholder="Date from:">
     <label for="date_to">Available until:</label>
-    <br>
-    <input type="date" id="date_to" name="date_to">
+    <input class="form-bottom-row-with-border date-to" type="date" id="date_to" name="date_to">
     <br>
     <label for="file">Photo</label>
-    <br>
-    <input type="file" id="file" name="file">
-    <br>
-    <input type="submit" value="List my space">
+    <input class="file-input" type="file" id="file" name="file">
+    <button type="submit">List my space</button>
   </form>
+  </div>
