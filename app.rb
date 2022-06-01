@@ -8,6 +8,8 @@ require "database_connection"
 
 require 'space_entity'
 require 'spaces_table'
+require 'request_entity'
+require 'requests_table'
 
 class WebApplicationServer < Sinatra::Base
   # This line allows us to send HTTP Verbs like `DELETE` using forms
@@ -33,6 +35,10 @@ class WebApplicationServer < Sinatra::Base
 
   def spaces_table
     $global[:spaces_table] ||= SpacesTable.new($global[:db])
+  end
+  
+  def requests_table
+    $global[:requests_table] ||= RequestsTable.new($global[:db])
   end
 
   # Start your server using `rackup`.
@@ -90,13 +96,34 @@ class WebApplicationServer < Sinatra::Base
     erb :space_details, locals: { space: space }
   end
 
+  get '/spaces/request/:index' do
+    space = spaces_table.get(params[:index])
+    erb :space_request, locals:{ space: space }
+  end
+
+  get '/requests' do
+    erb :requests, locals:{ 
+      requests: requests_table.list
+    }
+  end
+
+  post '/requests' do
+    request = RequestEntity.new(
+      params[:date], 
+      session[:user_id], 
+      params[:space_id] 
+    )
+    requests_table.add(request)
+    redirect '/requests'
+  end
+
   post '/registrations' do
-    session[:user_id] = params[:email]
+    session[:user_id] = 50
     redirect '/'
   end
 
   post '/registrations/login' do
-    session[:user_id] = params[:email]
+    session[:user_id] = 50
     redirect '/'
   end
 
