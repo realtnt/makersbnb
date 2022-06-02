@@ -1,0 +1,11 @@
+<h1>Request to book: <%= space.title %></h1>
+
+<form action="/requests" method="POST">
+  <label for="date">Choose date:</label>
+  <br>
+  <input type="date" id="date" name="date">
+  <br>
+  <input type="hidden" id="space_id" name="space_id" value="<%= space.id %>">
+
+  <input type="submit" value="Request Space">
+</form>
