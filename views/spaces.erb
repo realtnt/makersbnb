@@ -1,24 +1,39 @@
-<h1>Book a Space</h1>
+<h1>Request a Space</h1>
 
-<form action="/spaces/search" method="POST">
-  <label for="from">Available from:</label>
-  <input type="date" id="from" name="from">
-  <br>
-  <label for="until">Available until:</label>
-  <input type="date" id="until" name="until">
-  <br>
+<form class="flex-h" action="/spaces/search" method="POST">
+  <div>
+    <label for="from">Available from:</label>
+    <input type="date" id="from" name="from">
+  </div>
+  <div>
+    <label for="to">Available to:</label>
+    <input type="date" id="to" name="to">
+  </div>
   <input type="submit" value="List Spaces">
 </form>
 
-<% if spaces.empty?%>
+<% if spaces.empty? %>
 There are no spaces available.
 <% else %>
+  <% if date_from.empty? || date_to.empty? %>
+    <% spaces.map do |space| %>
+          <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
+          <div class="space-search-entry">
+            <h3><%= space.title %></h3>
+            <%= space.description %>
+          </div>
+          </a>
+      <% end %>
+  <% else %>
   <% spaces.map do |space| %>
-  <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
-  <div class="space-search-entry">
-    <h3><%= space.title %></h3>
-    <%= space.description %>
-  </div>
-  </a>
+      <% if space.date_from < date_to && space.date_to > date_from %>
+        <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
+        <div class="space-search-entry">
+          <h3><%= space.title %></h3>
+          <%= space.description %>
+        </div>
+        </a>
+       <% end %> 
+    <% end %>
   <% end %>
 <% end %>

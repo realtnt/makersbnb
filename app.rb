@@ -60,7 +60,9 @@ class WebApplicationServer < Sinatra::Base
 
   get '/spaces' do
     erb :spaces, locals: {
-      spaces: spaces_table.list
+      spaces: spaces_table.list,
+      date_from: '',
+      date_to: ''
     }
   end
 
@@ -115,6 +117,16 @@ class WebApplicationServer < Sinatra::Base
     )
     requests_table.add(request)
     redirect '/requests'
+  end
+
+  post '/spaces/search' do
+    date_from = params[:from]
+    date_to = params[:to]
+    erb :spaces, locals: {
+      spaces: spaces_table.list,
+      date_from: date_from,
+      date_to: date_to
+    }
   end
 
   post '/registrations' do
