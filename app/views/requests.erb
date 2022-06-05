@@ -1,0 +1,14 @@
+<h1>Requested spaces</h1>
+
+<% if requests.empty?%>
+There are no space requests.
+<% else %>
+  <% requests.map do |request| %>
+  <div>
+    <h2>Requested: <%= Space.find_by(id: request.space_id).title %></h2>
+    <p>On : <%= request.date %></p>
+    <p>On : <%= request.space_id %></p>
+    <p>By : <%= request.user_id %></p>
+  </div>
+  <% end %>
+<% end %>

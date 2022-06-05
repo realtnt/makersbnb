@@ -1,16 +1,18 @@
 # This line puts your web application into test mode
 # Without it, your tests might mistakenly pass.
-ENV['APP_ENV'] = 'test'
+ENV['RACK_ENV'] = 'test'
+require './config/environment'
+require 'support/database_cleaner'
 
 # This requires your app file
-require File.join(File.dirname(__FILE__), '..', 'app.rb')
+require File.join(File.dirname(__FILE__), '..', 'app', 'app.rb')
 
 require 'rspec' # This loads RSpec
 require 'rack/test' # This loads the Rack::Test testing tool
 
 # These lines load & set up the Capybara testing tool
 require 'capybara/rspec'
-Capybara.app = WebApplicationServer
+Capybara.app = WebApplicationController
 
 # This module contains some shared setup for your web tests
 module WebApplicationTests
@@ -20,7 +22,7 @@ module WebApplicationTests
   include Rack::Test::Methods
 
   # This tells Rack::Test to request to your Sinatra app
-  let(:app) { WebApplicationServer }
+  let(:app) { WebApplicationController }
 end
 
 RSpec.configure do |config|
