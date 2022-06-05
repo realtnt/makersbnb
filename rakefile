@@ -1,0 +1,13 @@
+require 'sinatra/base'
+require 'sinatra/activerecord'
+require 'sinatra/reloader'
+require 'sinatra/activerecord/rake'
+require 'require_all'
+require_all 'app'
+
+# namespace :db do
+#   task :load_config do
+#     require "./config/environment"
+#     require "./app"
+#   end
+# end

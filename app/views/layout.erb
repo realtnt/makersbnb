@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Markersbnb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,500;8..144,600;8..144,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/javascript/script.js" defer></script>
+  </head>
+  <body>
+    <header class="flex-h">
+      <div class="site-name">
+        <a href="/"><img class="logo" src="/images/makersbnb-transp.png" alt="makersbnb logo"></a>
+      </div>
+      <nav>
+      <% if session[:user_id] %>
+          <a href="/spaces/new">List a Space</a>
+          <a href="/spaces">Spaces</a>
+          <a href="/requests">Requests</a>
+          <a href="/sign_out">Sign Out</a> 
+      <% else %>
+          <a href="#">About</a>
+          <a name="login" href="/login">Log In</a> 
+      <% end %>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+    &copy; 2022 - MakersBnB
+    </footer>
+  </body>
+</html>

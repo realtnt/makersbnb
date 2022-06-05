@@ -1,0 +1,12 @@
+<h1>Space Details</h1>
+
+<img src="<%= space.image_url %>" class="space-image" >
+<h2><%= space.title %></h2>
+<p><%= space.description %></p>
+<ul>
+  <li>Price per night: £<%= space.price %></li>
+  <li>Available from: <%= space.date_from.strftime('%a, %d-%b-%Y') %></li>
+  <li>Available until: <%= space.date_to.strftime('%a, %d-%b-%Y') %></li>
+</ul>
+
+<a href="/spaces/request/<%= space.id %>">Request to book</a>

@@ -84,6 +84,7 @@ Sheets or [AsciiTable](https://ozh.github.io/ascii-tables/) to do this._
 | password TEXT          |
 | name TEXT              |
 
+
 ## spaces table
 
 |              spaces               |
@@ -96,6 +97,7 @@ Sheets or [AsciiTable](https://ozh.github.io/ascii-tables/) to do this._
 | date_from DATE                    |
 | date_to DATE                      |
 
+
 ## requests table
 
 |               requests               |
@@ -105,21 +107,6 @@ Sheets or [AsciiTable](https://ozh.github.io/ascii-tables/) to do this._
 | space_id INT REFERENCES spaces (id)  |
 | date DATE                            |
 
-
-## user-requests table
-
-|             users-requests              |
-|-----------------------------------------|
-| visitor_id SERIAL PRIMARY KEY           |
-| request_id INT REFERENCES requests (id) |
-
-
-
-## space-bookings table
-|             space-bookings              |
-|-----------------------------------------|
-| space_id INT REFERENCES spaces (id)     |
-| booking_id INT REFERENCES bookings (id) |
 
 ## bookings table
 
@@ -131,15 +118,8 @@ Sheets or [AsciiTable](https://ozh.github.io/ascii-tables/) to do this._
 | space_id INT REFERENCES space (id)      |
 | date DATE                               |
 
-## space-requests table
-
-|             space-requests              |
-|-----------------------------------------|
-| space_id INT REFERENCES spaces (id)     |
-| request_id INT REFERENCES requests (id) |
 
 ## messages table
-
 
 |               messages                 |
 |----------------------------------------|
