@@ -1,6 +1,6 @@
 <h1>Request a Space</h1>
 
-<form class="flex-h" action="/spaces/search" method="POST">
+<form class="flex-h search" action="/spaces/search" method="POST">
   <div>
     <label for="from">Available from:</label>
     <input type="date" id="from" name="from">
@@ -9,7 +9,7 @@
     <label for="to">Available to:</label>
     <input type="date" id="to" name="to">
   </div>
-  <button type="submit">Filter Spaces</button>
+  <button class="fancy_button" type="submit">Filter Spaces</button>
 </form>
 
 <% if spaces.empty? %>

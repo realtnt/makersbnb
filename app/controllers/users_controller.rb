@@ -3,6 +3,7 @@ class UsersController < Sinatra::Base
     set :session_secret, ENV['SESSION_KEY'] || 'top-secret'
     set :views, "app/views"
     set :public_dir, "public"
+    use Rack::MethodOverride
   end
   
   configure :development do
@@ -12,7 +13,7 @@ class UsersController < Sinatra::Base
   configure :test do
   end
   
-  get '/' do
+  get '/signup' do
     erb :sign_up
   end
 
@@ -50,13 +51,12 @@ class UsersController < Sinatra::Base
     erb :failure
   end
 
-  # post '/registrations' do
-  #   session[:user_id] = 50
-  #   redirect '/'
-  # end
-
   get '/sign_out' do
     session.clear
     redirect '/'
+  end
+
+  get '/profile' do
+    erb :profile
   end
 end

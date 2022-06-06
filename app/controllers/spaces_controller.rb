@@ -15,6 +15,10 @@ class SpacesController < Sinatra::Base
   configure :test do
   end
 
+  get '/' do
+    redirect '/spaces'
+  end
+
   get '/spaces' do
     erb :spaces, locals: {
       spaces: Space.all
@@ -72,6 +76,11 @@ class SpacesController < Sinatra::Base
         spaces: Space.where('date_from < ?', date_to).and(Space.where('date_to > ?', date_from))
       }
     end
+  end
+
+  delete '/spaces/:id' do
+    Space.delete(params[:id])
+    redirect '/profile'
   end
 
 end

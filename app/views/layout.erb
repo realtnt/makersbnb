@@ -16,12 +16,14 @@
       </div>
       <nav>
       <% if session[:user_id] %>
+          <% user = User.find_by(id: session[:user_id]) %>
           <a href="/spaces/new">List a Space</a>
           <a href="/spaces">Spaces</a>
           <a href="/requests">Requests</a>
+          <a name="profile" href="/profile"><%= user.first_name %>'s Profile</a>
           <a href="/sign_out">Sign Out</a> 
       <% else %>
-          <a href="#">About</a>
+          <a name="signup" href="/signup">Sign Up</a>
           <a name="login" href="/login">Log In</a> 
       <% end %>
       </nav>

@@ -65,8 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_153454) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bookings", "requests"
-  add_foreign_key "requests", "spaces"
-  add_foreign_key "requests", "users"
-  add_foreign_key "spaces", "users"
+  add_foreign_key "bookings", "requests", on_delete: :cascade
+  add_foreign_key "requests", "spaces", on_delete: :cascade
+  add_foreign_key "requests", "users", on_delete: :cascade
+  add_foreign_key "spaces", "users", on_delete: :cascade
 end

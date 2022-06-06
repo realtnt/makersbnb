@@ -6,7 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 header,
@@ -74,6 +73,13 @@ h3 {
   font-weight: 500;
 }
 
+.row-title {
+  display: block;
+  font-weight: bold;
+  padding-right: 3rem;
+  margin: 0.5rem;
+}
+
 /* FORMS */
 
 form {
@@ -98,7 +104,7 @@ textarea {
   height: 6rem;
 }
 
-form>button {
+.fancy_button {
   display: block;
   width: 50%;
   margin: 0 auto;
@@ -111,17 +117,17 @@ form>button {
   transition: 0.2s;
 }
 
-form>button:hover {
+.fancy_button:hover {
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.15);
   transform: translate(2px, 2px);
 }
 
-form>button:disabled {
+.fancy_button:disabled {
   background-color: #bb5A5F;
   transform: none;
 }
 
-form>button:hover:disabled {
+.fancy_button:hover:disabled {
   background-color: #bb5A5F;
 }
 
@@ -132,8 +138,16 @@ textarea {
   color: #444;
 }
 
-input[type=date] {
+.search input[type=date] {
   border-radius: 0.5rem;
+}
+
+table {
+  margin-bottom: 2rem;
+}
+
+.plain {
+  display: inline;
 }
 
 .file-input {
@@ -172,6 +186,12 @@ input[type=date] {
   border-radius: 0 0 0.5rem 0.5rem;
   margin-top: -1px;
   margin-bottom: 2rem;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .form-wrapper {
@@ -314,5 +334,4 @@ input[type=date] {
   content: "";
   display: table;
   clear: both;
-
 }
