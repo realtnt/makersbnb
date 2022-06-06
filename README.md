@@ -22,9 +22,9 @@
 `CREATE DATABASE makersbnb_test;`
 
 ### Mac
-`; createdb web_application_dev`
+`; createdb makersbnb_dev`
 
-`; createdb web_application_test`
+`; createdb makersbnb_test`
 
 ## Create database tables for dev database
 `rake db:migrate`
