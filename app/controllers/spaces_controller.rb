@@ -1,3 +1,6 @@
+require 'require_all'
+require_all 'app/helpers'
+
 class SpacesController < Sinatra::Base
   configure do
     set :session_secret, ENV['SESSION_KEY'] || 'top-secret'
@@ -28,19 +31,27 @@ class SpacesController < Sinatra::Base
       target = "public/uploads/#{filename}"
       File.open(target, 'wb') { |f| f.write tempfile.read }
     end
-
-    server_path = target[6..]
-    space = Space.new(
-      title: params[:title], 
-      price: params[:price].to_i,
-      description: params[:description], 
-      date_from: params[:date_from], 
-      date_to: params[:date_to],
-      image_url: params[:file] ? server_path : "/uploads/default.png",
-      user_id: session[:user_id]
+    dates = DatesChecker.new(
+      date_from: params[:date_from],
+      date_to: params[:date_to]
     )
-    space.save
-    redirect '/spaces'
+
+    if dates.check
+      server_path = target[6..] # gets rid of public from the path
+      space = Space.new(
+        title: params[:title], 
+        price: params[:price].to_i,
+        description: params[:description], 
+        date_from: params[:date_from], 
+        date_to: params[:date_to],
+        image_url: params[:file] ? server_path : "/uploads/default.png",
+        user_id: session[:user_id]
+      )
+      space.save
+      redirect '/spaces'
+    else
+      redirect '/failure'
+    end
   end
 
   get '/spaces/new' do
