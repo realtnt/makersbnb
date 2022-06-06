@@ -91,6 +91,7 @@ input {
   padding-left: 1rem;
   box-sizing: border-box;
   margin-top: -1px;
+  border-radius: 0.25rem;
 }
 
 textarea {
@@ -232,4 +233,11 @@ textarea {
 
 .space-thumbnail {
   width: 20rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 250px 250px 250px;
+  grid-gap: 10px;
+  color: #444;
 }

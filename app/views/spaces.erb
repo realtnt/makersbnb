@@ -16,24 +16,28 @@
 There are no spaces available.
 <% else %>
   <% if date_from.empty? || date_to.empty? %>
-    <% spaces.map do |space| %>
-          <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
-          <div class="space-search-entry">
-            <h3><%= space.title %></h3>
-            <%= space.description %>
-          </div>
-          </a>
-      <% end %>
-  <% else %>
-  <% spaces.map do |space| %>
-      <% if space.date_from < date_to && space.date_to > date_from %>
+    <div class="grid-container">
+      <% spaces.map do |space| %>
         <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
         <div class="space-search-entry">
           <h3><%= space.title %></h3>
           <%= space.description %>
         </div>
         </a>
-       <% end %> 
-    <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="grid_container">
+      <% spaces.map do |space| %>
+        <% if space.date_from < date_to && space.date_to > date_from %>
+          <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
+          <div class="space-search-entry">
+            <h3><%= space.title %></h3>
+            <%= space.description %>
+          </div>
+          </a>
+        <% end %> 
+      <% end %>
+    </div>
   <% end %>
 <% end %>
