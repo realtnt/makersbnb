@@ -31,6 +31,7 @@ class SpacesController < Sinatra::Base
       target = "public/uploads/#{filename}"
       File.open(target, 'wb') { |f| f.write tempfile.read }
     end
+
     dates = DatesChecker.new(
       date_from: params[:date_from],
       date_to: params[:date_to]

@@ -25,7 +25,7 @@ class UsersController < Sinatra::Base
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/"
+      redirect "/spaces"
     else
       redirect "/failure"
     end
@@ -40,7 +40,7 @@ class UsersController < Sinatra::Base
     )
     if @user.save
       session[:user_id] = @user.id
-      redirect '/'
+      redirect '/spaces'
     else
       redirect '/failure'
     end
