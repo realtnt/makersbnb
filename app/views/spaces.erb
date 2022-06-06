@@ -1,6 +1,6 @@
 <h1>Request a Space</h1>
 
-<form class="flex-h" action="/spaces/search" method="POST">
+<form class="flex-h search" action="/spaces/search" method="POST">
   <div>
     <label for="from">Available from:</label>
     <input type="date" id="from" name="from">
@@ -9,47 +9,23 @@
     <label for="to">Available to:</label>
     <input type="date" id="to" name="to">
   </div>
-  <input type="submit" id = "filter-button" value="Filter Spaces">
+  <button class="fancy_button" type="submit">Filter Spaces</button>
 </form>
 
 <% if spaces.empty? %>
 There are no spaces available.
 <% else %>
-  <% if date_from.empty? || date_to.empty? %>
-
-    <div class="grid-container">
-      <% spaces.map do |space| %>
-        <div class="space-search-entry">
-            <a class="space-link" id="space-link/<%= space.id %>" href="/spaces/<%= space.id %>">
-            <img class="grid-image" src="<%= space.image_url %>">
-            <h3><%= space.title %></h3>
-            <ul>
-              <div class ="show-date">
-                <% if space.date_from.strftime("%m") == space.date_to.strftime("%m") %>
-                  <li><%= "#{space.date_from.strftime("%d")} - #{space.date_to.strftime("%d")} #{space.date_to.strftime("%b")}" %></li>
-                <% else %>
-                  <li><%= "#{space.date_from.strftime("%d")} #{space.date_from.strftime("%b")} - #{space.date_to.strftime("%d")} #{space.date_to.strftime("%b")}" %></li>
-                <% end %>
-              </div>
-              <li id =price>£<%= space.price %>pn </li>
-            </ul>
-          </a>
-        </div>
-      <% end %>
-    </div>
-  <% else %>
-    <div class="grid-container">
-      <% spaces.map do |space| %>
-        <% if space.date_from < date_to && space.date_to > date_from %>
-          <a class="space-link" id="space-link/<%= space.id %>"  href="/spaces/<%= space.id %>">
-
-
-          <div class="space-search-entry">
-            <h3><%= space.title %></h3>
-            <%= space.description %>
-          </div>
-          </a>
-        <% end %> 
-      <% end %>
-  <% end %>
+  <div class="grid-container">
+    <% spaces.map do |space| %>
+      <div class="space-search-entry">
+          <a class="space-link" href="/spaces/<%= space.id %>">
+          <img class="grid-image" src="<%= space.image_url %>">
+          <h3 class="space-title"><%= space.title %></h3>
+          <ul>
+            <li id="price">£<%= space.price %> per night</li>
+          </ul>
+        </a>
+      </div>
+    <% end %>
+  </div>
 <% end %>
