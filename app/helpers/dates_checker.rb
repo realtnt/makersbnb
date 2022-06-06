@@ -7,6 +7,7 @@ class DatesChecker
   end
 
   def check
+    return false if @date_from == '' || @date_to == ''
     both_dates_in_the_future && date_to_after_date_from
   end
 
