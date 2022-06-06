@@ -36,7 +36,7 @@ class SpacesController < Sinatra::Base
       description: params[:description], 
       date_from: params[:date_from], 
       date_to: params[:date_to],
-      image_url: params[:file] ? server_path : "/uploads/default.png",
+      image_url: params[:file] ? server_path : "/uploads/camping.png",
       user_id: session[:user_id]
     )
     space.save
