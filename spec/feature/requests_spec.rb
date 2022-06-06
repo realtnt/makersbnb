@@ -55,6 +55,8 @@ RSpec.describe "Requests", type: :feature do
     expect(page).to have_content "Requests I have made"
     expect(page).to have_content "Mansion"
     expect(page).to have_content "2022-01-02"
+    expect(page).not_to have_content "Hut"
+    expect(page).not_to have_content "2022-06-21"
     click_link "Sign Out"
 
     click_link "Log In"
@@ -69,8 +71,5 @@ RSpec.describe "Requests", type: :feature do
     expect(page).to have_content "Requests I have made"
     expect(page).to have_content "Hut"
     expect(page).to have_content "2022-06-21"
-    expect(page).not_to have_content "Mansion"
-    expect(page).not_to have_content "2022-01-02"
-
   end
 end
