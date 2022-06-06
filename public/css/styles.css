@@ -234,6 +234,7 @@ textarea {
   width: 20rem;
 }
 
+
 .grid-container {
   display: flex;
   flex-flow: row wrap;
@@ -283,4 +284,20 @@ textarea {
   border-radius: 2rem;
   align-items: center;
   justify-content: center;
+
+.requests_made {
+  float: left;
+  width: 50%;
+}
+
+.requests_received {
+  float: right;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+
 }
