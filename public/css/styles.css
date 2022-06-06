@@ -13,7 +13,7 @@ header,
 nav,
 footer,
 main {
-  width: 100%;
+  width: 960px;
 }
 
 footer {
@@ -92,7 +92,6 @@ input {
   padding-left: 1rem;
   box-sizing: border-box;
   margin-top: -1px;
-  border-radius: 0.5rem;
 }
 
 textarea {
@@ -102,7 +101,7 @@ textarea {
 form>button {
   display: block;
   width: 50%;
-  margin: 2rem auto;
+  margin: 0 auto;
   color: white;
   background-color: #FF385C;
   border-radius: 2rem;
@@ -133,6 +132,10 @@ textarea {
   color: #444;
 }
 
+input[type=date] {
+  border-radius: 0.5rem;
+}
+
 .file-input {
   border-radius: 0.5rem;
 }
@@ -154,7 +157,6 @@ textarea {
   text-shadow: 1px 1px #fff;
   font-weight: 700;
   font-size: 10px;
-  border-radius: 0.5rem;
 }
 
 .file-input:hover::before {
@@ -163,18 +165,13 @@ textarea {
 
 .form-top-row {
   border-radius: 0.5rem 0.5rem 0 0;
-  /* border-bottom: none; */
   margin-top: 0;
 }
 
 .form-bottom-row {
   border-radius: 0 0 0.5rem 0.5rem;
-  /* border-top: none; */
   margin-top: -1px;
-}
-
-.form-bottom-row-with-border {
-  border-radius: 0 0 0.5rem 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .form-wrapper {
@@ -202,6 +199,11 @@ textarea {
 
 .space-image {
   width: 320px;
+}
+
+.add-margin {
+  display: block;
+  margin: 2rem 0;
 }
 
 .flex-h {
@@ -234,6 +236,10 @@ textarea {
   width: 20rem;
 }
 
+.space-title {
+  text-transform: capitalize;
+}
+
 
 .grid-container {
   display: flex;
@@ -249,8 +255,16 @@ textarea {
   display: flex;
   height: 15rem;
   width: 15rem;
-  margin-bottom: 5px;
-  border-radius: 10%;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  background-color: #eee;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.35);
+  transition: 0.2s;
+}
+
+.grid-image:hover {
+  transform: translate(2px, 2px);
 }
 
 .show-date {

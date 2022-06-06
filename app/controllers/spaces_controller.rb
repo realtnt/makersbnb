@@ -17,9 +17,7 @@ class SpacesController < Sinatra::Base
 
   get '/spaces' do
     erb :spaces, locals: {
-      spaces: Space.all,
-      date_from: '',
-      date_to: ''
+      spaces: Space.all
     }
   end
 
@@ -67,11 +65,13 @@ class SpacesController < Sinatra::Base
   post '/spaces/search' do
     date_from = params[:from]
     date_to = params[:to]
-    erb :spaces, locals: {
-      spaces: Space.all,
-      date_from: date_from,
-      date_to: date_to
-    }
+    if date_from == '' || date_to == ''
+      redirect '/spaces'
+    else
+      erb :spaces, locals: {
+        spaces: Space.where('date_from < ?', date_to).and(Space.where('date_to > ?', date_from))
+      }
+    end
   end
 
 end
