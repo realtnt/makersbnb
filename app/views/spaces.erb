@@ -17,7 +17,7 @@ There are no spaces available.
 <% else %>
   <% if date_from.empty? || date_to.empty? %>
     <% spaces.map do |space| %>
-          <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
+          <a class="space-link" id="space-link/<%= space.id %>" href="/spaces/<%= space.id %>">
           <div class="space-search-entry">
             <h3><%= space.title %></h3>
             <%= space.description %>
@@ -27,7 +27,7 @@ There are no spaces available.
   <% else %>
   <% spaces.map do |space| %>
       <% if space.date_from < date_to && space.date_to > date_from %>
-        <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
+        <a class="space-link" id="space-link/<%= space.id %>" href="/spaces/<%= space.id %>">
         <div class="space-search-entry">
           <h3><%= space.title %></h3>
           <%= space.description %>

@@ -47,4 +47,24 @@ RSpec.describe "Registrations", type: :feature do
     expect(page).to have_content "Log In"
     expect(page).not_to have_content "Sign Out"
   end
+
+  context "sign up as user and sign up with same credentials again" do
+    it "redirects to an error page" do
+      visit "/"
+      fill_in(name: 'email', with: 'jim@gmail.com')
+      fill_in "first_name", with: "Jimbo"
+      fill_in "last_name", with: "Jumbo"
+      fill_in "password", with: "1234"
+      fill_in "password_confirmation", with: "1234"
+      click_button "Sign Up"
+      click_link "Sign Out"
+      fill_in(name: 'email', with: 'jim@gmail.com')
+      fill_in "first_name", with: "Jimbo"
+      fill_in "last_name", with: "Jumbo"
+      fill_in "password", with: "1234"
+      fill_in "password_confirmation", with: "1234"
+      click_button "Sign Up"
+      expect(page).to have_content "Something went wrong!"
+    end
+  end
 end

@@ -233,3 +233,19 @@ textarea {
 .space-thumbnail {
   width: 20rem;
 }
+
+.requests_made {
+  float: left;
+  width: 50%;
+}
+
+.requests_received {
+  float: right;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

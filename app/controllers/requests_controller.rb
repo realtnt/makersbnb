@@ -18,8 +18,17 @@ class RequestsController < Sinatra::Base
   end
 
   get '/requests' do
+    requests = Request.all
+    spaces = Space.all.select { |space| space.user_id == session[:user_id] }
+    space_ids = []
+    spaces.each do |space|
+      space_ids.push(space.id)
+    end
+
     erb :requests, locals: { 
-      requests: Request.all
+      requests: requests,
+      spaces: spaces,
+      space_ids: space_ids
     }
   end
 
