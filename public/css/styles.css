@@ -91,7 +91,7 @@ input {
   padding-left: 1rem;
   box-sizing: border-box;
   margin-top: -1px;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 
 textarea {
@@ -219,12 +219,20 @@ textarea {
 }
 
 .space-search-entry {
-  margin-top: 0.5rem;
+  padding: 5px;
+  width: 200px;
+  height: 400px;
+  margin-top: 10px;
+  line-height: 150px;
+  color: white;
+
+  /* margin-top: 0.5rem;
   padding: 0.5rem;
   color: #bbb;
   background-color: #444;
   border: 2px #bb5A5F solid;
-  border-radius: 0.75rem;
+  border-radius: 0.75rem; */
+  flex: 1;
 }
 
 .space-link {
@@ -236,8 +244,23 @@ textarea {
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: 250px 250px 250px;
-  grid-gap: 10px;
-  color: #444;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  /* padding-left: 2rem; */
+  /* padding-right: 2rem; */
+  /* width: 70%; */
+  /* grid-gap: 10px; */
+}
+
+.grid-image {
+
+  width: 250px;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: auto;
+  background: #eee;
 }

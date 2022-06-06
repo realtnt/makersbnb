@@ -18,12 +18,16 @@ There are no spaces available.
   <% if date_from.empty? || date_to.empty? %>
     <div class="grid-container">
       <% spaces.map do |space| %>
-        <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
         <div class="space-search-entry">
-          <h3><%= space.title %></h3>
-          <%= space.description %>
+            <a class="space-link" id="space-link" href="/spaces/<%= space.id %>">
+            <img class="grid-image" src="<%= space.image_url %>">
+            <h3><%= space.title %></h3>
+            <ul>
+              <li><%= space.description %></li>
+              <li>Price: £<%= space.price %></li>
+            </ul>
+          </a>
         </div>
-        </a>
       <% end %>
     </div>
   <% else %>
