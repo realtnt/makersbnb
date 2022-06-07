@@ -94,7 +94,7 @@ RSpec.describe "Spaces", type: :feature do
     expect(page).to have_content "Request to book: Space"
     expect(page).to have_content "Choose date:"
     fill_in "Choose date:", with: "02/06/2023"
-    click_button "Request Space"
+    click_button "Submit request"
     expect(page).to have_content "Requests I have made"
     expect(page).to have_content "Space"
     expect(page).to have_content "2023-06-02"
