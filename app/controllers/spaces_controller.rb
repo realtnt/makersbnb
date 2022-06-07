@@ -83,4 +83,44 @@ class SpacesController < Sinatra::Base
     redirect '/profile'
   end
 
+  get '/spaces/:id/edit' do
+    erb :spaces_edit, locals: {
+      space_id: params[:id]
+    }
+  end
+
+  patch '/spaces/:id' do
+    target = ''
+    if params[:file]
+      tempfile = params[:file][:tempfile]
+      filename = params[:file][:filename]
+      target = "public/uploads/#{filename}"
+      File.open(target, 'wb') { |f| f.write tempfile.read }
+    end
+
+    dates = DatesChecker.new(
+      date_from: params[:date_from],
+      date_to: params[:date_to]
+    )
+
+    if dates.check
+      server_path = target[6..] # gets rid of public from the path
+      space = Space.find_by(id: params[:id])
+      date_from = params[:date_from] == '' ? space.date_from : params[:date_from]
+      date_to = params[:date_to] == '' ? space.date_to : params[:date_to]
+      p date_from
+      p date_to
+      space.update(
+        title: params[:title], 
+        price: params[:price].to_i,
+        description: params[:description], 
+        date_from: date_from, 
+        date_to: date_to,
+        image_url: params[:file] ? server_path : "/uploads/default.png"
+      )
+      redirect '/profile'
+    else
+      redirect '/failure'
+    end
+  end
 end
