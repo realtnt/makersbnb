@@ -11,14 +11,39 @@ RSpec.describe "Registrations", type: :feature do
     user.save!
   end
 
+  context "sign up as user and sign up with same credentials again" do
+    it "redirects to an error page" do
+      visit "/signup"
+      fill_in "email", with: "jim@gmail.com"
+      fill_in "first_name", with: "Jimbo"
+      fill_in "last_name", with: "Jumbo"
+      fill_in "password", with: "1234"
+      fill_in "password_confirmation", with: "1234"
+      click_button "Sign Up"
+      expect(page).to have_content "Sign Out"
+
+      click_link "Sign Out"
+
+      visit "/signup"
+      fill_in "email", with: "jim@gmail.com"
+      fill_in "first_name", with: "Jimbo"
+      fill_in "last_name", with: "Jumbo"
+      fill_in "password", with: "1234"
+      fill_in "password_confirmation", with: "1234"
+      click_button "Sign Up"
+
+      expect(page).to have_content "Something went wrong!"
+    end
+  end
+  
   it "shows a sign up page" do
     visit "/"
-    expect(page).to have_content "Sign up to MakersBnB"
+    expect(page).to have_content "Request a Space"
   end
 
   it "signs up a user and logs in" do
-    visit "/"
-    fill_in(name: 'email', with: 'jim@gmail.com')
+    visit "/signup"
+    fill_in "email", with: "jim@gmail.com"
     fill_in "first_name", with: "Jimbo"
     fill_in "last_name", with: "Jumbo"
     fill_in "password", with: "1234"
@@ -48,23 +73,4 @@ RSpec.describe "Registrations", type: :feature do
     expect(page).not_to have_content "Sign Out"
   end
 
-  context "sign up as user and sign up with same credentials again" do
-    it "redirects to an error page" do
-      visit "/"
-      fill_in(name: 'email', with: 'jim@gmail.com')
-      fill_in "first_name", with: "Jimbo"
-      fill_in "last_name", with: "Jumbo"
-      fill_in "password", with: "1234"
-      fill_in "password_confirmation", with: "1234"
-      click_button "Sign Up"
-      click_link "Sign Out"
-      fill_in(name: 'email', with: 'jim@gmail.com')
-      fill_in "first_name", with: "Jimbo"
-      fill_in "last_name", with: "Jumbo"
-      fill_in "password", with: "1234"
-      fill_in "password_confirmation", with: "1234"
-      click_button "Sign Up"
-      expect(page).to have_content "Something went wrong!"
-    end
-  end
 end
