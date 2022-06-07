@@ -30,10 +30,7 @@
                 <input id="hidden" type="hidden" name="_method" value="delete">
                 <button type="submit">Delete</button>
               </form>
-              <form class="plain" action="/spaces/<%= space.id %>/edit" method="post">
-                <input id="hidden" type="hidden" name="_method" value="patch">
-                <button type="submit">Edit</button>
-              </form>
+              <button onclick="document.location='/spaces/<%= space.id %>/edit'" class="plain">Edit</button>
             </td>
           </tr>
         <% end %>

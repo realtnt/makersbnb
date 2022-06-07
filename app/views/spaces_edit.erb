@@ -1,0 +1,23 @@
+<% space = Space.find_by(id: space_id) %>
+<div class="form-wrapper">
+<h2> Update A Space </h2>
+  <form action="/spaces/<%= space.id %>" method = "POST" enctype="multipart/form-data">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <label for="title">Name</label>
+    <input class="form-top-row" type="text" id="title" name="title" value="<%= space.title %>">
+    <label for="description">Description</label>
+    <textarea id="description" name="description"><%= space.description %></textarea>
+    <label for="price">Price per night</label>
+    <input class="form-bottom-row" type="text" id="price" name="price" value="<%= space.price %>">
+    <br>
+    <h3>Availability</h3>
+    <label for="date_from">Available from:</label>
+    <input class="form-top-row date-from" type="date" id="date_from" name="date_from" value="<%= space.date_from.strftime('%Y-%m-%d') %>">
+    <label for="date_to">Available until:</label>
+    <input class="form-bottom-row date-to" type="date" id="date_to" name="date_to" value="<%= space.date_to.strftime('%Y-%m-%d') %>">
+    <br>
+    <label for="file">Photo</label>
+    <input class="file-input add-margin" type="file" id="file" name="file">
+    <button class="fancy_button" type="submit">List my space</button>
+  </form>
+</div>
