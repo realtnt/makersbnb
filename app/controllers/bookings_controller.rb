@@ -12,4 +12,11 @@ class BookingsController < Sinatra::Base
   configure :test do
   end
   
+  get '/bookings' do
+  end
+
+  post '/bookings' do
+  end
+
+  
 end
