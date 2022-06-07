@@ -108,8 +108,6 @@ class SpacesController < Sinatra::Base
       space = Space.find_by(id: params[:id])
       date_from = params[:date_from] == '' ? space.date_from : params[:date_from]
       date_to = params[:date_to] == '' ? space.date_to : params[:date_to]
-      p date_from
-      p date_to
       space.update(
         title: params[:title], 
         price: params[:price].to_i,
