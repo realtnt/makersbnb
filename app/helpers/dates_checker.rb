@@ -2,8 +2,8 @@ require 'date'
 
 class DatesChecker
   def initialize(date_from:, date_to:)
-    @date_from = date_from
-    @date_to = date_to
+    @date_from = Date.parse(date_from)
+    @date_to = Date.parse(date_to)
   end
 
   def check
@@ -14,7 +14,8 @@ class DatesChecker
   private
 
   def both_dates_in_the_future
-    DateTime.parse(@date_from).future? && DateTime.parse(@date_to).future?
+    @date_from > DateTime.now && 
+    @date_to > DateTime.now
   end
 
   def date_to_after_date_from
