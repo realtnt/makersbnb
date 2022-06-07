@@ -3,9 +3,9 @@
 <form action="/requests" method="POST">
   <label for="date">Choose date:</label>
   <br>
-  <input type="date" id="date" name="date">
+  <input type="date" id="date" name="date" min="<%= space.date_from.strftime("%F") %>" max="<%= space.date_to.strftime("%F") %>">
   <br>
   <input type="hidden" id="space_id" name="space_id" value="<%= space.id %>">
 
-  <input type="submit" value="Request Space">
+  <input type="submit" value="Submit request">
 </form>
