@@ -22,7 +22,7 @@
   <div class="spaces-list">
     <table>
       <tbody>
-        <% Space.all.map do |space| %>
+        <% Space.where('user_id = ?', session[:user_id]).map do |space| %>
           <tr>
             <td><span class="row-title"><%= space.title %></span></td>
             <td>

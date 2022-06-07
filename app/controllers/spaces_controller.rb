@@ -34,6 +34,8 @@ class SpacesController < Sinatra::Base
       File.open(target, 'wb') { |f| f.write tempfile.read }
     end
 
+    p params[:date_from]
+    p params[:date_to]
     dates = DatesChecker.new(
       date_from: params[:date_from],
       date_to: params[:date_to]

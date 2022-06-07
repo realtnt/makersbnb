@@ -1,0 +1,36 @@
+<h1>Bookings</h1>
+  <div class="row">
+      <div class="requests_made">
+        <h2> Requests I have made </h2>
+        <% if requests.empty?%>
+          There are no space requests.
+        <% else %>
+        <% requests.map do |request| %>
+          <% if request.user_id == session[:user_id]%>
+            <div>
+              <h3><%= Space.find_by(id: request.space_id).title %></h3>
+              <p>On : <%= request.date %></p>
+              <p>By : <%= User.find_by(id: request.user_id).email %></p>
+            </div>
+            <br>
+          <%end%>
+        <% end %>
+      <% end %> 
+      </div>
+      <div class="requests_received">
+        <h2> Requests I have received </h2>
+        <% if requests.empty?%>
+          There are no space requests.
+        <% else %>
+          <% requests.map do |request| %>
+            <% if space_ids.include?(request.space_id) %>
+              <div>
+                <h3><%= Space.find_by(id: request.space_id).title %></h3>
+                <p>On : <%= request.date %></p>
+                <p>By : <%= User.find_by(id: request.user_id).email %></p>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+  </div>

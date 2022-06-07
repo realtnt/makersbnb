@@ -16,14 +16,14 @@
 There are no spaces available.
 <% else %>
   <div class="grid-container">
-    <% spaces.map do |space| %>
+    <% spaces.map.with_index do |space, index| %>
       <div class="space-search-entry">
-        <a class="space-link" href="/spaces/<%= space.id %>">
-        <img class="grid-image" src="<%= space.image_url %>">
-        <h3 class="space-title"><%= space.title %></h3>
-        <ul>
-          <li class="price"><span class="bold">£<%= space.price %></span> per night</li>
-        </ul>
+        <a class="space-link" id="space-link-<%= index %>" href="/spaces/<%= space.id %>">
+          <img class="grid-image" src="<%= space.image_url %>">
+          <h3 class="space-title"><%= space.title %></h3>
+          <ul>
+            <li class="price"><span class="bold">£<%= space.price %></span> per night</li>
+          </ul>
         </a>
       </div>
     <% end %>
