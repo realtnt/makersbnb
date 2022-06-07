@@ -70,7 +70,7 @@ h2 {
 
 h3 {
   font-size: 1.0rem;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .row-title {
@@ -299,7 +299,7 @@ table {
   color: rgb(120, 119, 121);
 }
 
-#price {
+.space-search-entry .price {
   text-decoration: underline;
 }
 
@@ -334,4 +334,8 @@ table {
   content: "";
   display: table;
   clear: both;
+}
+
+.bold {
+  font-weight: bold;
 }
